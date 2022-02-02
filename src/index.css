@@ -1,0 +1,32 @@
+@import url("bootstrap/dist/css/bootstrap.min.css");
+
+/* Normalize Selector */
+* {
+  user-select: none;
+}
+
+p {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Scroll Bar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--bs-blue);
+  border-radius: 8px;
+}
+
+/* For Links Row */
+.linksRow {
+  justify-content: center;
+  align-items: center;
+}
+
+.linksRow .col {
+  margin: 0 10px;
+  flex: 0;
+}
