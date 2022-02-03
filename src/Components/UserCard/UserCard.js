@@ -10,13 +10,13 @@ const UserCard = ({ flag, name, points }) => {
     <Card className="m-2 bg-primary border-0 d-block">
       <Table className="text-white text-center" striped bordered hover>
         <thead>
-          <tr style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "35px" }}>
-            <th style={{ width: "calc(100% / 3)" }}>User</th>
-            <td>
+          <tr style={{ height: "35px" }}>
+            <th>User</th>
+            <th>
               {isLoading ? (
                 <>
                   <img
-                    style={{ marginInline: "10px", width: "50px", height: "35px" }}
+                    style={{ marginInline: "10px", width: "40px", height: "25px" }}
                     width="40px"
                     height="100%"
                     src={flag}
@@ -27,7 +27,7 @@ const UserCard = ({ flag, name, points }) => {
               ) : (
                 "Loading..."
               )}
-            </td>
+            </th>
             <th>{points}</th>
           </tr>
         </thead>
