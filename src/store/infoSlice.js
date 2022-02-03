@@ -30,7 +30,7 @@ export const addPoint = createAsyncThunk(
 
     // Set Data From API
     axios.post(
-      "http://localhost/server/MemoryGame/public/server/setPoint.php",
+      "https://testsss53d4sa54.000webhostapp.com/setPoint.php",
       Data
     );
 
