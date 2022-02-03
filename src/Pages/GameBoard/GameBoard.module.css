@@ -76,7 +76,7 @@
 .game .Card .BackFace {
   -webkit-transform: rotateY(180deg);
           transform: rotateY(180deg);
-  overflow: hidden;
+  height: 100%;
   border-radius: 8px;
 }
 
