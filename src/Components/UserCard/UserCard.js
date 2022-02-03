@@ -10,8 +10,8 @@ const UserCard = ({ flag, name, points }) => {
     <Card className="m-2 bg-primary border-0 d-block">
       <Table className="text-white text-center" striped bordered hover>
         <thead>
-          <tr>
-            <th>User</th>
+          <tr style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "35px" }}>
+            <th style={{ width: "calc(100% / 3)" }}>User</th>
             <td>
               {isLoading ? (
                 <>
