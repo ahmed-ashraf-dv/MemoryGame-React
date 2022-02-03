@@ -6,10 +6,6 @@ import GameBoard from "./Pages/GameBoard/GameBoard";
 import ScoresBoard from "./Pages/ScoresBoard/ScoresBoard";
 import { Route, Routes, Navigate } from "react-router-dom";
 
-// For Access Cross
-resonse_object.header("Access-Control-Allow-Origin", "*");
-resonse_object.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-
 function App() {
   // Put To Redux
   const Dispatch = useDispatch();
