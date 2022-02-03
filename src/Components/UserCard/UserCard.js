@@ -16,7 +16,7 @@ const UserCard = ({ flag, name, points }) => {
               {isLoading ? (
                 <>
                   <img
-                    style={{ marginInline: "10px" }}
+                    style={{ marginInline: "10px", width: 50px }}
                     width="40px"
                     height="100%"
                     src={flag}
