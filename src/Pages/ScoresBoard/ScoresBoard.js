@@ -22,7 +22,7 @@ function ScoresBoard() {
   // Get Data
   useEffect(() => {
     axios(
-      "http://localhost/server/MemoryGame/public/server/getCountrys.php"
+      "https://testsss53d4sa54.000webhostapp.com/getCountrys.php"
     ).then(({ data }) => {
       // Sort With Point
       data = data.sort((a, b) => b.points - a.points);
