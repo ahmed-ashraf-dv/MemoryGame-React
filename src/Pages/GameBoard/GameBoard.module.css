@@ -78,6 +78,7 @@
           transform: rotateY(180deg);
   height: 100%;
   border-radius: 8px;
+  overflow: hidden;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
