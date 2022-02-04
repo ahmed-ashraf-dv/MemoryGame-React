@@ -16,6 +16,7 @@
 .scoreBoard .table thead {
   font-weight: bold;
   border-bottom: 2px solid;
+  text-align: center;
 }
 
 .scoreBoard .table td,
@@ -37,6 +38,7 @@
 @media (max-width: 500px) {
   .scoreBoard .table thead {
     display: none;
+    text-align: left;
   }
 
   .scoreBoard .table,
@@ -55,7 +57,6 @@
     padding-left: 50%;
     text-align: center;
     position: relative;
-    text-align: center;
   }
   .scoreBoard .table td::before {
     content: attr(data-label);
