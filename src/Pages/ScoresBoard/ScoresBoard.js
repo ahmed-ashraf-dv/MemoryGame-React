@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
+import style from "./ScoresBoard.module.css";
 import { useSelector } from "react-redux";
 import axios from "axios";
-import { Table, Container, Button } from "react-bootstrap";
+import { Container, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import UserCard from "../../Components/UserCard/UserCard";
 import CountryCard from "../../Components/CountryCard/CountryCard";
@@ -21,26 +22,26 @@ function ScoresBoard() {
 
   // Get Data
   useEffect(() => {
-    axios(
-      "https://testsss53d4sa54.000webhostapp.com/getCountrys.php"
-    ).then(({ data }) => {
-      // Sort With Point
-      data = data.sort((a, b) => b.points - a.points);
+    axios("https://testsss53d4sa54.000webhostapp.com/getCountrys.php").then(
+      ({ data }) => {
+        // Sort With Point
+        data = data.sort((a, b) => b.points - a.points);
 
-      // Get Firs Top 10
-      data = data.slice(0, 10);
+        // Get Firs Top 10
+        data = data.slice(0, 10);
 
-      // Set Scores
-      setData(data);
-    });
+        // Set Scores
+        setData(data);
+      }
+    );
   }, []);
 
   return (
-    <section style={{ marginBottom: "150px" }}>
+    <section className={style.scoreBoard}>
       <Container>
-        <h2 className="text-center m-3 mt-5">Scores Board</h2>
+        <h2 className="mt-5">Scores Board</h2>
         <UserCard flag={flag} name={name} points={points} />
-        <Table striped bordered hover>
+        <table className={style.table}>
           <thead>
             <tr>
               <th>#</th>
@@ -59,7 +60,7 @@ function ScoresBoard() {
               </tr>
             )}
           </tbody>
-        </Table>
+        </table>
         <Button
           className="d-block m-auto"
           onClick={() => navigate("/game")}

@@ -1,0 +1,70 @@
+.scoreBoard {
+  margin-bottom: 150px;
+}
+
+.scoreBoard h2 {
+  text-align: center;
+  margin: 0 60px auto;
+}
+
+.scoreBoard .table {
+  width: 100%;
+  margin-bottom: 30px;
+  border-collapse: collapse;
+}
+
+.scoreBoard .table thead {
+  font-weight: bold;
+  border-bottom: 2px solid;
+}
+
+.scoreBoard .table td,
+.scoreBoard .table th {
+  padding: 12px 15px;
+  text-align: center;
+  font-size: 16px;
+}
+
+.scoreBoard .table tbody tr:nth-child(odd) {
+  box-shadow: inset 0 0 0 9999px rgba(0, 0, 0, 0.05);
+}
+
+.scoreBoard .table tbody tr:hover {
+  box-shadow: inset 0 0 0 9999px rgba(0, 0, 0, 0.15);
+}
+
+/* taple responsive */
+
+@media (max-width: 500px) {
+  .scoreBoard .table thead {
+    display: none;
+  }
+
+  .scoreBoard .table,
+  .scoreBoard .table tbody,
+  .scoreBoard .table tr,
+  .scoreBoard .table td {
+    display: block;
+    width: 100%;
+  }
+  .scoreBoard .table tr {
+    margin-bottom: 15px;
+    border: 1px solid #999999;
+  }
+
+  .scoreBoard .table td {
+    padding-left: 50%;
+    text-align: center;
+    position: relative;
+  }
+  .scoreBoard .table td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 0;
+    width: 50%;
+    padding-left: 15px;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: left;
+  }
+}

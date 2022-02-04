@@ -1,10 +1,14 @@
 import React from "react";
 
 const CountryCard = ({ data }) => {
+  const shorCutPoint = (points) => {
+    return points;
+  };
+
   return data.map(({ flag, name, points }, i) => (
     <tr key={i}>
-      <td>{i + 1}</td>
-      <td>
+      <td data-label="#">{i + 1}</td>
+      <td data-label="Country">
         <img
           style={{ marginInline: "10px", width: "40px", height: "25px" }}
           width="40px"
@@ -14,11 +18,7 @@ const CountryCard = ({ data }) => {
         />
         {name}
       </td>
-      <td>
-        {points >= 10000
-          ? `${points.toString().slice(0, 2)}${+points.toString().slice(2, 3) ? "," + points.toString().slice(2, 3) : ""}K`
-          : points}
-      </td>
+      <td data-label="points">{shorCutPoint(points)}</td>
     </tr>
   ));
 };
