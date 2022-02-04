@@ -1,8 +1,7 @@
 import React from "react";
 
 const CountryCard = ({ data }) => {
-  let points = 11400;
-  return data.map(({ flag, name }, i) => (
+  return data.map(({ flag, name, points }, i) => (
     <tr key={i}>
       <td>{i + 1}</td>
       <td>
