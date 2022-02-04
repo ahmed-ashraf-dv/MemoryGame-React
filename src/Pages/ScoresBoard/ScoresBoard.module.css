@@ -21,7 +21,6 @@
 .scoreBoard .table td,
 .scoreBoard .table th {
   padding: 12px 15px;
-  text-align: center;
   font-size: 16px;
 }
 
@@ -56,6 +55,7 @@
     padding-left: 50%;
     text-align: center;
     position: relative;
+    text-align: center;
   }
   .scoreBoard .table td::before {
     content: attr(data-label);
