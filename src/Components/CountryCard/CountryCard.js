@@ -6,7 +6,7 @@ const CountryCard = ({ data }) => {
       <td>{i + 1}</td>
       <td>
         <img
-          style={{ marginInline: "10px" }}
+          style={{ marginInline: "10px", width: "40px", height: "25px" }}
           width="40px"
           height="100%"
           src={flag}
