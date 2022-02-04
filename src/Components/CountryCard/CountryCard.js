@@ -1,7 +1,8 @@
 import React from "react";
 
 const CountryCard = ({ data }) => {
-  return data.map(({ flag, name, points }, i) => (
+  let points = 11400;
+  return data.map(({ flag, name }, i) => (
     <tr key={i}>
       <td>{i + 1}</td>
       <td>
@@ -14,7 +15,11 @@ const CountryCard = ({ data }) => {
         />
         {name}
       </td>
-      <td>{points}</td>
+      <td>
+        {points >= 10000
+          ? `${points.toString().slice(0, 2)},${points.toString().slice(2, 3)}K`
+          : points}
+      </td>
     </tr>
   ));
 };
