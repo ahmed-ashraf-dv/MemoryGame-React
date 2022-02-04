@@ -16,7 +16,7 @@ const CountryCard = ({ data }) => {
       </td>
       <td>
         {points >= 10000
-          ? `${points.toString().slice(0, 2)},${points.toString().slice(2, 3)}K`
+          ? `${points.toString().slice(0, 2)}${+points.toString().slice(2, 3) ? "," + points.toString().slice(2, 3) : ""}K`
           : points}
       </td>
     </tr>
