@@ -10,6 +10,16 @@ p {
   padding: 0 !important;
 }
 
+/* Prevent Drag Img */
+
+img { 
+  -webkit-user-drag: none; 
+  -khtml-user-drag: none; 
+  -moz-user-drag: none; 
+  -o-user-drag: none; 
+  user-drag: none; 
+}
+
 /* Scroll Bar */
 ::-webkit-scrollbar {
   width: 10px;
