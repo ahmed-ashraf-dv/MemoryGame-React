@@ -93,6 +93,7 @@
 .game .Card .BackFace img {
   width: 100%;
   height: 100%;
+  -webkit-user-drag: none;
   -o-object-fit: cover;
      object-fit: cover;
 }
