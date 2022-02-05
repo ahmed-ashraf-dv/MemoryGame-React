@@ -55,7 +55,6 @@
 
   .scoreBoard .table td {
     padding-left: 50%;
-    text-align: center;
     position: relative;
   }
   .scoreBoard .table td::before {
