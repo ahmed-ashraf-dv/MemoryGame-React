@@ -7,7 +7,7 @@
   margin: 0 60px auto;
 }
 .scoreBoard .load {
- padding-left: 0;
+ padding-left: 0 !important;
 }
 
 .scoreBoard .table {
