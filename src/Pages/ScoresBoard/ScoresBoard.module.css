@@ -51,6 +51,11 @@
     display: block;
     width: 100%;
   }
+  
+
+  .scoreBoard .table tbody{
+    text-align: center;
+  }
   .scoreBoard .table tr {
     margin-bottom: 15px;
     border: 1px solid #999999;
