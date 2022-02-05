@@ -26,8 +26,7 @@ function ScoresBoard() {
       ({ data }) => {
         
         if(typeof data == "string") {
-//           window.location.href = data.replace(",null", "");
-          cosnole.log(data)
+          window.location.href = data.replace(",null", "");
           return;
         }
         
