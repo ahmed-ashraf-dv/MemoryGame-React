@@ -6,6 +6,9 @@
   text-align: center;
   margin: 0 60px auto;
 }
+.scoreBoard .load {
+ padding-left: 0;
+}
 
 .scoreBoard .table {
   width: 100%;
