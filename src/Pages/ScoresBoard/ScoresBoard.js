@@ -54,7 +54,7 @@ function ScoresBoard() {
               <CountryCard data={data} />
             ) : (
               <tr>
-                <td colSpan="3" className="text-center">
+                <td colSpan="3" className={style.load + " text-center"}>
                   Loding...
                 </td>
               </tr>
