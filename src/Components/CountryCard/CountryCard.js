@@ -2,7 +2,19 @@ import React from "react";
 
 const CountryCard = ({ data }) => {
   const shorCutPoint = (points) => {
-    return points;
+	  return Math.abs(Number(points)) >= 1.0e+9 
+	  		? Math.abs(Number(points)) / 1.0e+9 + "B" 
+	  		
+	  		 // six Zeroes for Millions
+	  		: Math.abs(Number(points)) >= 1.0e+6 
+	  		? Math.abs(Number(points)) / 1.0e+6 + "M"
+
+	  		 // four Zeroes for Billions
+	       	: Math.abs(Number(points)) >= 1.0e+4
+	       	? Math.abs(Number(points)) / 1.0e+3 + "K"
+
+	       	// No Zero
+	       	: Math.abs(Number(points));
   };
 
   return data.map(({ flag, name, points }, i) => (
