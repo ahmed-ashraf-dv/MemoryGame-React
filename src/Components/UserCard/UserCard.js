@@ -5,6 +5,23 @@ import { Table, Card } from "react-bootstrap";
 const UserCard = ({ flag, name, points }) => {
   // Get Loading
   const isLoading = useSelector((state) => state.info.country.isLoading);
+  
+  // Format Nums
+  const shorCutPoint = (points) => {
+	  return Math.abs(Number(points)) >= 1.0e+9 
+	  		? Math.abs(Number(points)) / 1.0e+9 + "B" 
+	  		
+	  		 // six Zeroes for Millions
+	  		: Math.abs(Number(points)) >= 1.0e+6 
+	  		? Math.abs(Number(points)) / 1.0e+6 + "M"
+
+	  		 // four Zeroes for Billions
+	       	: Math.abs(Number(points)) >= 1.0e+4
+	       	? Math.abs(Number(points)) / 1.0e+3 + "K"
+
+	       	// No Zero
+	       	: Math.abs(Number(points));
+  };
 
   return (
     <Card className="m-2 bg-primary border-0 d-block">
@@ -28,7 +45,7 @@ const UserCard = ({ flag, name, points }) => {
                 "Loading..."
               )}
             </th>
-            <th>{points}</th>
+            <th>{shorCutPoint(points)}</th>
           </tr>
         </thead>
       </Table>
