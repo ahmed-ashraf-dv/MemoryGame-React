@@ -28,7 +28,7 @@ const CountryCard = ({ data }) => {
           src={flag}
           alt="Err In Server"
         />
-        <p style={{ paddingTop: "10px!important" }}>{name}</p>
+        <span>{name}</span>
       </td>
       <td data-label="points">{shorCutPoint(points)}</td>
     </tr>
