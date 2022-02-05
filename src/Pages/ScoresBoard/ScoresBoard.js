@@ -26,7 +26,7 @@ function ScoresBoard() {
       ({ data }) => {
         
         if(typeof data == "string") {
-          console.log(data);
+          window.location.href = data.replace(",null", "");
           return;
         }
         
