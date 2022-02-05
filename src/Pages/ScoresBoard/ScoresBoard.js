@@ -24,6 +24,12 @@ function ScoresBoard() {
   useEffect(() => {
     axios("https://testsss53d4sa54.000webhostapp.com/getCountrys.php").then(
       ({ data }) => {
+        
+        if(typeof data == "string") {
+          console.log(data);
+          return;
+        }
+        
         // Sort With Point
         data = data.sort((a, b) => b.points - a.points);
 
