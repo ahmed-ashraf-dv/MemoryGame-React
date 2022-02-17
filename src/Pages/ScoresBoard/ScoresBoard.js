@@ -31,7 +31,7 @@ function ScoresBoard() {
     // Stop Request If isBlock
     if (isBlock === null || isBlock.isBlacklist) return;
 
-    const domin = "http://memorygame.freecluster.eu";
+    const domin = "https://api0014s1a5d34a3.000webhostapp.com";
 
     axios(`${domin}/getCountrys.php`).then(({ data }) => {
       // If Hack Stoped App
