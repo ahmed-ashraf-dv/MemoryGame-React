@@ -83,10 +83,3 @@ const infoSlice = createSlice({
 
 export const { setInfo } = infoSlice.actions;
 export default infoSlice.reducer;
-
-// <form action="http://localhost/Server/public/server/setPoint.php" method="post">
-//     <input type="text" name="name" />
-//     <input type="text" name="flag" />
-//     <input type="text" name="points" />
-//     <input type="submit" name="" value="click" />
-// </form>
