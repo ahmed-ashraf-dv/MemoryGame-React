@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const domin = "http://memorygame.freecluster.eu";
+const domin = "https://api0014s1a5d34a3.000webhostapp.com";
 const imgDomin = "https://countryflagsapi.com/png";
 
 export const getCountery = createAsyncThunk("users/getCountery", async () => {
