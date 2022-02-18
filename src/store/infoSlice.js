@@ -1,46 +1,58 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
+const domin = "http://localhost/Server/public/server";
+const imgDomin = "https://countryflagsapi.com/png";
+
 export const getCountery = createAsyncThunk("users/getCountery", async () => {
   // Get Data From API
-  const res = await axios("https://api.db-ip.com/v2/free/self");
+  const { data } = await axios("https://api.db-ip.com/v2/free/self");
+  // const { data } = await axios("http://ip-api.com/json");
 
   // Get Name And Flag
-  const { countryName: name, countryCode: flag } = res.data;
+  // const { country: name, countryCode: flag } = data;
+  const { countryName: name, countryCode: flag } = data;
 
   // Return Data
-  return { name, flag };
+  return { name, flag: `${imgDomin}/${flag}` };
 });
 
 export const addPoint = createAsyncThunk(
   "users/addPoint",
-  async (point, { getState }) => {
+  async (points, { getState }) => {
     // Get User Info
-    const {
-      info: {
-        country: { flag, name },
-      },
-    } = getState();
+    const { info } = getState();
+    const { country } = info;
+    const { flag, name } = country;
+
+    if (points <= 0) return points;
 
     // Create Data
     const Data = new FormData();
     Data.append("name", name);
     Data.append("flag", flag);
-    Data.append("point", point);
+    Data.append("points", points);
 
-    // Set Data From API
-    axios.post(
-      "https://testsss53d4sa54.000webhostapp.com/setPoint.php",
-      Data
-    );
+    axios.post(`${domin}/setPoint.php`, Data);
 
     // Return Data
-    return point;
+    return points;
   }
 );
 
+export const isBlock = createAsyncThunk("users/checkBlock", async () => {
+  // Get Respons
+  let Blocked = await axios(`${domin}/isBlacklist.php`).then(
+    ({ data }) => data
+  );
+
+  // Return Data
+  return Blocked;
+});
+
 const initialState = {
   points: 0,
+  isBlock: null,
   country: { isLoading: false, name: null, flag: null },
 };
 
@@ -48,21 +60,33 @@ const infoSlice = createSlice({
   name: "info",
   initialState,
   reducers: {
-    setInfo: (state, action) => {
-      state.points = action.payload;
+    setInfo: (state, { payload }) => {
+      state.points = payload;
     },
   },
   extraReducers: {
-    [getCountery.fulfilled]: (state, action) => {
-      state.country.name = action.payload.name;
-      state.country.flag = `https://countryflagsapi.com/png/${action.payload.flag}`;
+    [getCountery.fulfilled]: (state, { payload: { name, flag } }) => {
+      state.country.name = name;
+      state.country.flag = flag;
       state.country.isLoading = true;
     },
-    [addPoint.fulfilled]: (state, action) => {
-      state.points += action.payload;
+
+    [addPoint.fulfilled]: (state, { payload }) => {
+      state.points += payload;
+    },
+
+    [isBlock.fulfilled]: (state, { payload }) => {
+      state.isBlock = payload;
     },
   },
 });
 
 export const { setInfo } = infoSlice.actions;
 export default infoSlice.reducer;
+
+// <form action="http://localhost/Server/public/server/setPoint.php" method="post">
+//     <input type="text" name="name" />
+//     <input type="text" name="flag" />
+//     <input type="text" name="points" />
+//     <input type="submit" name="" value="click" />
+// </form>

@@ -7,7 +7,11 @@
   margin: 0 60px auto;
 }
 .scoreBoard .load {
- padding-left: 0 !important;
+  padding-left: 0 !important;
+}
+
+.scoreBoard a {
+  width: fit-content;
 }
 
 .scoreBoard .table {
@@ -28,16 +32,44 @@
   font-size: 16px;
 }
 
+.scoreBoard .table tbody td:nth-of-type(2) {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.scoreBoard .table tbody td:nth-of-type(3) {
+  text-align: center;
+}
+
 .scoreBoard .table tbody tr:nth-child(odd) {
+  -webkit-box-shadow: inset 0 0 0 9999px rgba(0, 0, 0, 0.05);
   box-shadow: inset 0 0 0 9999px rgba(0, 0, 0, 0.05);
 }
 
 .scoreBoard .table tbody tr:hover {
+  -webkit-box-shadow: inset 0 0 0 9999px rgba(0, 0, 0, 0.15);
   box-shadow: inset 0 0 0 9999px rgba(0, 0, 0, 0.15);
 }
 
-/* taple responsive */
+.scoreBoard .scrollingBox {
+  max-height: 400px;
+  min-height: 200px;
+  margin-bottom: 30px;
+  overflow: auto;
+}
 
+.scoreBoard .scrollingBox table {
+  margin-bottom: 0;
+}
+
+.scoreBoard .scrollingBox table thead {
+  position: sticky;
+  top: 0;
+  background-color: var(--bs-gray-300);
+}
+
+/* taple responsive */
 @media (max-width: 500px) {
   .scoreBoard .table thead {
     display: none;
@@ -50,11 +82,6 @@
   .scoreBoard .table td {
     display: block;
     width: 100%;
-  }
-  
-
-  .scoreBoard .table tbody{
-    text-align: center;
   }
   .scoreBoard .table tr {
     margin-bottom: 15px;
@@ -74,5 +101,26 @@
     font-size: 15px;
     font-weight: bold;
     text-align: left;
+  }
+
+  .scoreBoard .table tbody td {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    gap: 5px;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+
+  .scoreBoard .scrollingBox {
+    max-height: 1337px;
   }
 }

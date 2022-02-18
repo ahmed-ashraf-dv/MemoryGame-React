@@ -1,9 +1,11 @@
 import React from "react";
 
-function Header() {
+function Header({ isBlock }) {
   return (
     <header className="bg-dark">
-      <p className="text-white text-center p-3 fs-5">Hello User</p>
+      <p className="text-white text-center p-3 fs-5">
+        Hello {isBlock ? <span className="text-danger">Hacker</span> : "User"}
+      </p>
     </header>
   );
 }

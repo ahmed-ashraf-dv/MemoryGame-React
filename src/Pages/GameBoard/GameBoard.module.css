@@ -48,6 +48,9 @@
   -ms-flex-align: center;
   align-items: center;
   -webkit-transform-style: preserve-3d;
+  -ms-transform-style: preserve-3d;
+  -o-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
   transform-style: preserve-3d;
   -webkit-transition: 0.6s;
   -o-transition: 0.6s;
@@ -63,18 +66,30 @@
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   font-size: 35px;
 }
 
-.game .Card.Acctive {
+.game .Card:is(.success, .Acctive, .flip) {
   -webkit-transform: rotateY(180deg);
+  -ms-transform: rotateY(180deg);
+  -o-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
   transform: rotateY(180deg);
   pointer-events: none;
 }
 
+.game .Card.disable {
+  pointer-events: none !important;
+}
+
 .game .Card .BackFace {
   -webkit-transform: rotateY(180deg);
+  -ms-transform: rotateY(180deg);
+  -o-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
   transform: rotateY(180deg);
   height: 100%;
   border-radius: 8px;
@@ -98,4 +113,10 @@
   -webkit-user-drag: none;
   -o-object-fit: cover;
   object-fit: cover;
+}
+
+@media (max-width: 500px) {
+  .game .Card::before {
+    font-size: 20px;
+  }
 }

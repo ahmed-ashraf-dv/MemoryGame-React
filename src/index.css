@@ -20,6 +20,10 @@ p {
   border-radius: 8px;
 }
 
+.hack::-webkit-scrollbar-thumb {
+  background-color: var(--bs-danger);
+}
+
 /* For Links Row */
 .linksRow {
   justify-content: center;
@@ -29,4 +33,57 @@ p {
 .linksRow .col {
   margin: 0 10px;
   flex: 0;
+}
+
+.App {
+  background-color: var(--bs-gray-300);
+}
+
+.banImg {
+  width: 100%;
+  border-radius: 8px;
+  height: 450px;
+  margin-bottom: 150px !important;
+}
+
+.banImg img {
+  object-fit: contain;
+}
+
+/* Helper Classes */
+.sm-Img {
+  width: 40px;
+  height: 25px;
+  margin-inline: 10px;
+}
+
+.pb-200px {
+  padding-bottom: 200px;
+}
+
+.cu-pointer {
+  cursor: pointer;
+}
+
+.fot-link {
+  background-color: #fff;
+  border-radius: 50%;
+}
+
+.fot-span {
+  width: 0;
+  opacity: 0;
+  position: absolute;
+}
+
+.w-fit-content {
+  width: fit-content;
+}
+
+.fw-600 {
+  font-weight: 600;
+}
+
+.br-8 {
+  border-radius: 8px;
 }

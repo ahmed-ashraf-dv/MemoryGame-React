@@ -1,79 +1,70 @@
 import React, { useState, useEffect } from "react";
-import style from "./ScoresBoard.module.css";
+import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { Container } from "react-bootstrap";
+import style from "./ScoresBoard.module.css";
 import axios from "axios";
-import { Container, Button } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
 import UserCard from "../../Components/UserCard/UserCard";
-import CountryCard from "../../Components/CountryCard/CountryCard";
+import CountiesTable from "../../Components/CountiesTable/CountiesTable";
 
 function ScoresBoard() {
-  // Top Scores
+  // Scores
   const [data, setData] = useState();
-
-  // For Redirect
-  const navigate = useNavigate();
 
   // User Info
   const {
     points,
+    isBlock,
     country: { name, flag },
   } = useSelector((state) => state.info);
 
+  // His Country
+  const myCountry = data
+    ?.map(
+      (country, idx) =>
+        country.name === name && { points: country.points, order: idx + 1 }
+    )
+    .filter((valid) => valid)[0];
+
   // Get Data
   useEffect(() => {
-    axios("https://testsss53d4sa54.000webhostapp.com/getCountrys.php").then(
-      ({ data }) => {
-        
-        if(typeof data == "string") {
-          window.location.href = data.replace(",null", "");
-          return;
-        }
-        
-        // Sort With Point
-        data = data.sort((a, b) => b.points - a.points);
+    // Stop Request If isBlock
+    if (isBlock === null || isBlock.isBlacklist) return;
 
-        // Get Firs Top 10
-        data = data.slice(0, 10);
+    const domin = "http://localhost/Server/public/server";
 
-        // Set Scores
-        setData(data);
+    axios(`${domin}/getCountrys.php`).then(({ data }) => {
+      // If Hack Stoped App
+      if (typeof data === "string") {
+        return;
       }
-    );
-  }, []);
+      // Sort With Point
+      data = data.sort((a, b) => b.points - a.points);
+
+      // Set Scores
+      setData(data);
+    });
+  }, [isBlock]);
 
   return (
     <section className={style.scoreBoard}>
       <Container>
-        <h2 className="mt-5">Scores Board</h2>
-        <UserCard flag={flag} name={name} points={points} />
-        <table className={style.table}>
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Country</th>
-              <th>Points</th>
-            </tr>
-          </thead>
-          <tbody>
-            {data ? (
-              <CountryCard data={data} />
-            ) : (
-              <tr>
-                <td colSpan="3" className={style.load + " text-center"}>
-                  Loding...
-                </td>
-              </tr>
-            )}
-          </tbody>
-        </table>
-        <Button
-          className="d-block m-auto"
-          onClick={() => navigate("/game")}
-          variant="primary"
-        >
+        <h2 className="mt-5 fs-4">Top Scores</h2>
+        <UserCard title="You" flag={flag} name={name} points={points} />
+        <CountiesTable topOnly={true} data={data} />
+        <Link to="/game" className="d-block m-auto mt-4 px-3 btn btn-primary">
           Solve Quiz
-        </Button>
+        </Link>
+        <h2 className="mt-5 fs-4">All Scores</h2>
+        <UserCard
+          title={`#${myCountry?.order || "Out the list"}`}
+          flag={flag}
+          name={name}
+          points={myCountry?.points || 0}
+        />
+        <div className={style.scrollingBox}>
+          <CountiesTable data={data} />
+        </div>
       </Container>
     </section>
   );
