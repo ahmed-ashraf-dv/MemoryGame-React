@@ -19,14 +19,14 @@ function Footer({ isBlock }) {
       classes: "fot-link",
     },
     {
-      link: "https://www.linkedin.com/in/ahmed-ashraf-10712922a/",
+      link: "https://linkedin.com/in/ahmed-ashraf-dev",
       size: "2x",
       color: "#fff",
       icon: faLinkedinIn,
       classes: "",
     },
     {
-      link: "https://github.com/ahmdgun0",
+      link: "https://github.com/ahmed-ashraf-dv",
       size: "2x",
       color: "#fff",
       icon: faGithub,
