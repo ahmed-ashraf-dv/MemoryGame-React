@@ -4,12 +4,11 @@ import { useState, useEffect, useMemo } from "react";
 const INCREASE = "increase";
 const DECREASE = "decrease";
 
-const useTimer = ({
-  initTime: { start = 0, end },
-  type = INCREASE,
-  amount = 1,
-  callBack,
-}) => {
+const useTimer = (props) => {
+  // Get Props
+  const { initTime, type = INCREASE, amount = 1, callBack } = props;
+  const { start = 0, end } = initTime;
+
   // Initial Time
   const [timer, setTimer] = useState(start);
 

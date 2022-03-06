@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useCallback, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -12,7 +13,7 @@ function GameBoard() {
   const navigate = useNavigate();
 
   // For Actions
-  const Dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   // Parent For Cards
   const cardsParent = useRef(null);
@@ -56,13 +57,13 @@ function GameBoard() {
         localStorage.setItem("point", (myPoints += points));
 
         // Add Point
-        Dispatch(addPoint(points));
+        dispatch(addPoint(points));
 
         // Return Same Value
         return points;
       });
     }, 500);
-  }, [navigate, Dispatch]);
+  }, []);
 
   // Start Timer
   const { formatingTimer, initTimer } = useTimer({

@@ -12,11 +12,8 @@ function ScoresBoard() {
   const [data, setData] = useState();
 
   // User Info
-  const {
-    points,
-    isBlock,
-    country: { name, flag },
-  } = useSelector((state) => state.info);
+  const { points, isBlock, country } = useSelector((state) => state.info);
+  const { name, flag } = country;
 
   // His Country
   const myCountry = data

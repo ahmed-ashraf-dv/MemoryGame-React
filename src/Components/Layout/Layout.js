@@ -6,9 +6,7 @@ import Header from "../Header/Header";
 
 function Layout({ children: SelectedPage }) {
   // Check If His Ban
-  const {
-    isBlock: { isBlacklist },
-  } = useSelector((state) => state.info);
+  const { isBlacklist } = useSelector((state) => state.info.isBlock);
 
   return (
     <Fragment>

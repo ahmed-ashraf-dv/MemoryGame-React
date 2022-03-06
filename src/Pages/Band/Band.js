@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useCallback } from "react";
 import { isBlock } from "../../store/infoSlice";
 import { useSelector, useDispatch } from "react-redux";
@@ -7,7 +8,7 @@ import RandImg from "../../Components/RandImg/RandImg";
 
 const Band = () => {
   //
-  const Dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   // Get Blocked State
   const { timer } = useSelector((state) => state.info.isBlock);
@@ -18,9 +19,9 @@ const Band = () => {
     type: "decrease",
     format: true,
     callBack: useCallback(() => {
-      Dispatch(isBlock());
+      dispatch(isBlock());
       document.body.classList.remove("hack");
-    }, [Dispatch]),
+    }, []),
   });
 
   return (

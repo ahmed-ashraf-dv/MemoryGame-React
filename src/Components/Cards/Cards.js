@@ -1,26 +1,23 @@
-import React, { useEffect, useCallback, useMemo } from "react";
+import React, { useEffect, useCallback } from "react";
 import style from "../../Pages/GameBoard/GameBoard.module.css";
 import Card from "../Card/Card";
 
-function Cards({ timer, setPoint, par }) {
-  const ALL_Cards = useMemo(
-    () => [
-      { name: "eg" },
-      { name: "tz" },
-      { name: "ad" },
-      { name: "sa" },
-      { name: "ec" },
-      { name: "PS" },
-      { name: "eg" },
-      { name: "tz" },
-      { name: "ad" },
-      { name: "sa" },
-      { name: "ec" },
-      { name: "PS" },
-    ],
-    []
-  );
+const ALL_Cards = [
+  { name: "eg" },
+  { name: "tz" },
+  { name: "ad" },
+  { name: "sa" },
+  { name: "ec" },
+  { name: "PS" },
+  { name: "eg" },
+  { name: "tz" },
+  { name: "ad" },
+  { name: "sa" },
+  { name: "ec" },
+  { name: "PS" },
+];
 
+function Cards({ timer, setPoint, par }) {
   // Create A Random Order
   const randOrder = useCallback(() => {
     ALL_Cards.forEach((card) => {
@@ -28,7 +25,7 @@ function Cards({ timer, setPoint, par }) {
       const rand = Math.floor(Math.random() * (ALL_Cards.length * 2));
       card.order = rand;
     });
-  }, [ALL_Cards]);
+  }, []);
 
   // Show And Hide Card
   const showMeCards = useCallback(() => {

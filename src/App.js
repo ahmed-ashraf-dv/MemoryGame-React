@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setInfo, getCountery, isBlock } from "./store/infoSlice";
@@ -10,7 +11,7 @@ import Loding from "./Components/Loding/Loding";
 
 function App() {
   // For Redirect
-  const Navigate = useNavigate();
+  const navigate = useNavigate();
 
   // Loding State
   const [isRedirect, setDirect] = useState(false);
@@ -19,7 +20,7 @@ function App() {
   const { pathname } = useLocation();
 
   // Put To Redux
-  const Dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   // Get Blocked State
   const { isBlock: Blocked } = useSelector((state) => state.info);
@@ -36,16 +37,16 @@ function App() {
     const info = +localStorage.getItem("point");
 
     // Get Countery
-    Dispatch(getCountery());
+    dispatch(getCountery());
 
     // Dispatch Info
-    Dispatch(setInfo(info));
-  }, [Dispatch]);
+    dispatch(setInfo(info));
+  }, []);
 
   // Check Is Block
   useEffect(() => {
     // Get Response
-    if (Blocked === null) return Dispatch(isBlock());
+    if (Blocked === null) return dispatch(isBlock());
 
     // Redirect To Ban Page If his Band
     if (Blocked.isBlacklist) {
@@ -53,15 +54,15 @@ function App() {
       document.body.classList.add("hack");
 
       // Redirect To Ban Page
-      Navigate("/ban");
+      navigate("/ban");
     }
     // If Not Banned And View Ban Page
     else if (Blocked.isBlacklist === false && pathname === "/ban")
-      Navigate("/");
+      navigate("/");
 
     // Loding !!
     setDirect(true);
-  }, [Blocked, Dispatch, Navigate, pathname]);
+  }, [Blocked, pathname]);
 
   return (
     <div className="App">
